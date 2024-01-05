@@ -45,6 +45,12 @@ def main():
     player1_score = 0
     player2_score = 0
 
+    # Lists to store correct and incorrect answers for each player
+    player1_correct_answers = []
+    player1_incorrect_answers = []
+    player2_correct_answers = []
+    player2_incorrect_answers = []
+
     # Shuffle the questions to ensure each player gets a different set
     import random
     random.shuffle(trivia_questions)
@@ -52,7 +58,7 @@ def main():
     # Loop through each question for both players
     for player in range(2):
         print(f"Player {player + 1}'s turn:")
-        for question in trivia_questions[player * 5: (player + 1) * 5]:
+        for question in random.sample(trivia_questions, 5):
             question.display_question()
             player_answer = get_valid_input()
 
@@ -61,10 +67,16 @@ def main():
                 print("Correct!\n")
                 if player == 0:
                     player1_score += 1
+                    player1_correct_answers.append((question.question, question.options[question.correct_answer - 1]))
                 else:
                     player2_score += 1
+                    player2_correct_answers.append((question.question, question.options[question.correct_answer - 1]))
             else:
-                print("Incorrect. The correct answer was:", question.options[question.correct_answer - 1], "\n")
+                print(f"Incorrect. The correct answer was: {question.options[question.correct_answer - 1]}\n")
+                if player == 0:
+                    player1_incorrect_answers.append((question.question, question.options[question.correct_answer - 1]))
+                else:
+                    player2_incorrect_answers.append((question.question, question.options[question.correct_answer - 1]))
 
     # Display the final scores and declare the winner
     print("\nPlayer 1's score:", player1_score)
@@ -79,10 +91,22 @@ def main():
     else:
         print("No winner. Both players scored zero.")
 
-    # Display the correct answers for each question
-    print("\nCorrect Answers:")
-    for i, question in enumerate(trivia_questions, 1):
-        print(f"{i}. {question.options[question.correct_answer - 1]}")
+    # Display the correct and incorrect answers for each player
+    print("\nPlayer 1's Correct Answers:")
+    for i, (question, correct_answer) in enumerate(player1_correct_answers, 1):
+        print(f"{i}. {question} - Your Answer: {correct_answer}")
+
+    print("\nPlayer 1's Incorrect Answers:")
+    for i, (question, correct_answer) in enumerate(player1_incorrect_answers, 1):
+        print(f"{i}. {question} - Correct Answer: {correct_answer}")
+
+    print("\nPlayer 2's Correct Answers:")
+    for i, (question, correct_answer) in enumerate(player2_correct_answers, 1):
+        print(f"{i}. {question} - Your Answer: {correct_answer}")
+
+    print("\nPlayer 2's Incorrect Answers:")
+    for i, (question, correct_answer) in enumerate(player2_incorrect_answers, 1):
+        print(f"{i}. {question} - Correct Answer: {correct_answer}")
 
 if __name__ == "__main__":
     main()
