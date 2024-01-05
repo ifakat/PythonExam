@@ -1,5 +1,12 @@
-from datetime import datetime
+#######third question################
+####################################
+# Create Patient and Procedure Class
+###################################
 
+
+#used for to get today date
+from datetime import datetime
+#create Patient class to hold patient info
 class Patient:
     def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, phone_number, emergency_contact_name, emergency_contact_phone):
         # Patient attributes

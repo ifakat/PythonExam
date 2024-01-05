@@ -8,7 +8,7 @@
 # - Non-alphabetic characters are left as they are.
 # - No distinction is made between uppercase and lowercase for alphabetical characters.
 # - The result is always returned in uppercase, as per the requested output.
-# The user is prompted to enter a correct key until a valid key is provided.
+# - The user is prompted to enter a correct key until a valid key is provided.
 
 # pip install pyperclip
 #need to install

@@ -1,3 +1,18 @@
+#######Second Question question################
+####################################
+# Trivia Game Option One
+###################################
+
+
+
+# Assumptions for Trivia:
+# 1. Each player answers 5 different questions randomly selected from a pool of 10 questions.
+# 2. The winner is determined after both players have answered their questions, and the results are displayed.
+# 3. At the end, if a player enters the number of an option that is not available,
+# they are warned, and the valid number of options is displayed to choose.
+# 4. Additionally, the correct answers to the questions are displayed after the winner results are shown.
+
+
 class Question:
     def __init__(self, question, options, correct_answer):
         self.question = question
